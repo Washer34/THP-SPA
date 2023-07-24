@@ -11861,3 +11861,26 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+body {
+  background-color: #191919;
+}
+
+h1, .h1 {
+  color: #D20A32;
+}
+
+h2, .h2,
+p,
+.card-text,
+.card-title {
+  color: #FFFFFF;
+}
+
+.card {
+  background-color: #191919;
+}
+.card img {
+  border-radius: 0;
+  height: 20vh;
+  object-fit: cover;
+}

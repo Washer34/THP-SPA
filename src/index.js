@@ -1,7 +1,20 @@
 import "./style/index.scss";
 import * as bootstrap from "bootstrap";
+import routes from "./scripts/routes.js";
 
-console.log("Hello!");
 
-const API_KEY = process.env.API_KEY;
-console.log(API_KEY);
+const callRoute = () => {
+  const { hash } = window.location;
+  const pathParts = hash.substring(1).split("/");
+
+  const pageName = pathParts[0];
+  const pageArgument = pathParts[1] || "";
+  const pageFunction = routes[pageName];
+
+  if (pageFunction !== undefined) {
+    pageFunction(pageArgument);
+  }
+};
+
+window.addEventListener("hashchange", () => callRoute());
+window.addEventListener("DOMContentLoaded", () => callRoute());

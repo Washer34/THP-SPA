@@ -1,1 +1,31 @@
 @import "bootstrap/scss/bootstrap";
+
+$couleur-body: #191919;
+$couleur-h1: #D20A32;
+$couleur-h2-texte: #FFFFFF;
+
+body {
+  background-color: $couleur-body;
+}
+
+h1 {
+  color: $couleur-h1;
+}
+
+h2,
+p,
+.card-text,
+.card-title {
+  color: $couleur-h2-texte
+}
+
+.card {
+  background-color: $couleur-body;
+
+  img {
+    border-radius: 0;
+    height: 20vh;
+    object-fit: cover;
+  }
+
+}
