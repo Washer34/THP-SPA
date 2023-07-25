@@ -1,6 +1,7 @@
 import "./style/index.scss";
 import * as bootstrap from "bootstrap";
 import routes from "./scripts/routes.js";
+import PageList from "./scripts/PageList.js";
 
 
 const callRoute = () => {
@@ -18,3 +19,15 @@ const callRoute = () => {
 
 window.addEventListener("hashchange", () => callRoute());
 window.addEventListener("DOMContentLoaded", () => callRoute());
+
+// search 
+
+
+const inputText = document.getElementById('inputText');
+const searchButton = document.getElementById('searchButton');
+searchButton.addEventListener('click', () => {
+  const userInput = inputText.value;
+  console.log(userInput)
+  PageList(userInput);
+})
+ 

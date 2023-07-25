@@ -1,46 +1,55 @@
 const API_KEY = process.env.API_KEY
 
-const PageList = (argument = '') => {
+const PageList = (argument) => {
+  
   const preparePage = () => {
     const cleanedArgument = argument.trim().replace(/\s+/g, '-');
 
     const getPlatformImages = (article) => {
-      const platformImages = [];
-      article.platforms.forEach((element) => {
-        if (element.platform.slug.includes('xbox')) {
-          platformImages.push(`<span><img src="src/assets/images/xbox.svg"></span>`);
-        }
-        if (element.platform.slug.includes('playstation')){
-          platformImages.push(`<span><img src="src/assets/images/playstation.svg"></span>`);
+      const platformImagesSet = new Set();
+      const validSlugs = ['xbox', 'playstation', 'pc', 'android', 'nintendo']
+      article.parent_platforms.forEach((element) => {
+        if (validSlugs.includes(element.platform.slug)) {
+          platformImagesSet.add(`<span><img src="src/assets/images/${element.platform.slug}.svg"></span>`);
         }
       });
-      return platformImages.join('')
+    
+      return Array.from(platformImagesSet).join('');
     };
 
-    const displayResults = (articles) => {
-
-      const resultsContent = articles.map((article) => (
-        `
-          <article class="col-md-6 col-lg-4">
-            <div class="cardGame" >
-              <div class="card" style="width: 22rem;">
-                <a href="#pagedetail/${article.id}"> 
-                  <img src="${article.background_image}" class="card-img-top" alt="${article.name}">
-                  <div class="card-body">
-                    <h5 class="card-title">${article.name}</h5>
-                  </div>
-                  <div id="platform">
-                   ${getPlatformImages(article)}
-                  </div>
-                </a>
-              </div>
+    let displayResults = (articles) => {
+      const maxArticles = 27;
+      const displayedArticlesSlice = articles.slice(0, maxArticles);
+      const resultsContent = displayedArticlesSlice.map((article) => (
+      `
+        <article class="col-md-6 col-lg-4 hidden">
+          <div class="cardGame" >
+            <div class="card" style="width: 22rem;">
+              <a href="#pagedetail/${article.id}"> 
+                <img src="${article.background_image}" class="card-img-top" alt="${article.name}">
+                <div class="card-body">
+                  <h5 class="card-title">${article.name}</h5>
+                  <div class="platform-images">
+                    ${getPlatformImages(article)}
+                  </div> 
+                </div>
+              </a>
             </div>
-          </article>
-        `
+          </div>
+        </article>
+      `
       ));
 
       const resultsContainer = document.querySelector('.page-list .articles');
       resultsContainer.innerHTML = resultsContent.join("\n");
+
+      const cards = document.querySelectorAll('article.hidden');
+      const display1 = [...cards].slice(0,9)
+      display1.forEach((element) => {
+        element.classList.remove('hidden')
+      })
+      
+
     };
 
     const fetchList = (url, argument) => {
@@ -49,6 +58,7 @@ const PageList = (argument = '') => {
         .then((response) => response.json())
         .then((responseData) => {
           displayResults(responseData.results)
+          findByPlatform(responseData.results)
         });
     };
 
@@ -57,15 +67,84 @@ const PageList = (argument = '') => {
 
   const render = () => {
     pageContent.innerHTML = `
+      <section>
+        <h2>Welcome,</h2>
+        <p>The Hyper Progame is the world’s premier event for computer and video games and related products. At The Hyper Progame,
+        the video game industry’s top talent pack the Los Angeles Convention Center, connecting tens of thousands of the best,
+        brightest, and most innovative in the interactive entertainment industry. For three exciting days, leading-edge companies,
+        groundbreaking new technologies, and never-before-seen products will be showcased. The Hyper Progame connects you
+        with both new and existing partners, industry executives, gamers, and social influencers providing unprecedented exposure
+        </p>
+        <select name="platform-selector" id="platform-selector">
+          <option value="any">Platform : any</option>
+          <option value="playstation">Playstation</option>
+          <option value="xbox360">Xbox</option>
+        </select>
+      </section>
       <section class="page-list ">
         <div class="articles row">Loading...</div>
+        <div class="row">
+          <div class="col text-center">
+            <button id="showMoreButton" class="btn btn-primary">Show More</button>
+          </div>
+        </div>
       </section>
     `;
+    const showMoreButton = document.querySelector('#showMoreButton');
+    showMoreButton.addEventListener('click', showMoreArticles);
+
+    const platformSelector = document.querySelector('#platform-selector');
+    platformSelector.addEventListener('change', findByPlatform )
+    // platformSelector.addEventListener('change', function(event) {
+    //   console.log(event)
+    //   console.log(platformSelector.value)
+    //   const newArticles = articles
+    // } )
 
     preparePage();
   };
 
+
+  const findByPlatform = (articles) => {
+    const selectedPlatform = document.querySelector('#platform-selector').value
+    console.log(selectedPlatform)
+
+    // //test pour trouver la donnée
+    // let findPlatforms = articles.map(article => article.platforms);
+    // console.log(findPlatforms)
+  
+    // let secondStep =  findPlatforms.map(platforms => {
+    //   return platforms.map(platform => platform.platform.slug)
+    // })
+    // console.log(secondStep)
+
+
+    // fonction filter pour trouver les jeux qui sont sur une platforme donnée 
+    const sortedArticles = articles.filter(article => {
+      const platforms = article.platforms.map(platform => platform.platform.slug);
+      return platforms.includes("xbox360")
+    });
+
+    console.log(sortedArticles)
+
+  }
+
+  const showMoreArticles = () => {
+    const cards = document.querySelectorAll('article.hidden');
+    const display1 = [...cards].slice(0,9)
+    display1.forEach((element) => {
+      element.classList.remove('hidden')
+    });
+    if (cards.length <= 9) {
+      const showMoreButton = document.querySelector('#showMoreButton');
+      showMoreButton.classList.add('hidden')
+    }
+  };
+
+
   render();
+  
 };
+
 
 export default PageList;

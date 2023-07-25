@@ -8,12 +8,27 @@ body {
   background-color: $couleur-body;
 }
 
-h1 {
-  color: $couleur-h1;
+div {
+  margin-bottom: 1em;
 }
 
-h2,
-p,
+h1,
+h3,
+h4 {
+  color: $couleur-h1;
+  font-weight: bold;
+}
+
+p {
+  margin-bottom: 2em;
+  color: $couleur-h2-texte;
+}
+
+h2 {
+  color: $couleur-h2-texte;
+  font-weight: bold;
+}
+
 .card-text,
 .card-title {
   color: $couleur-h2-texte
@@ -28,4 +43,116 @@ p,
     object-fit: cover;
   }
 
+}
+
+.platform-images {
+  span {
+    font-size: 16px;
+    margin-right: 1em;
+  }
+
+  img {
+    height: 1em;
+    width: 1em;
+    vertical-align: middle;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.btn {
+  background-color: $couleur-h1;
+  border-style: none;
+  border-radius: 0%;
+  font-weight: bold;
+}
+
+.logo-search {
+  position: relative;
+  border: none;
+  background-color: transparent;
+  color: #191919;
+  align-self: center;
+}
+
+#inputText {
+  margin-top: 10px;
+  display: flex;
+  position: absolute;
+  background-color: transparent;
+  color: #FFFFFF;
+  border-radius: 15px;
+  border: 1px solid #f1f1f1;
+  align-items: center;
+  justify-content: center;
+  padding-left: 33px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#inputText:focus {
+  border: 1px solid #ffffff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.searchButton {
+  align-items: center;
+}
+
+
+button span img {
+  height: 18px;
+  width: auto;
+  margin-top: 16px;
+  margin-left: 5px;
+}
+
+button span {
+  align-items: center;
+  justify-content: center;
+}
+
+.article-banner {
+  width: 100%;
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+.info-title {
+  color: $couleur-h2-texte;
+  font-weight: bold;
+}
+
+.info-content {
+  color: $couleur-h2-texte;
+}
+
+.video {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+
+  img {
+    width: 60%
+  }
+}
+
+.overlay {
+  width: 10%;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hoverable:hover {
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
 }
