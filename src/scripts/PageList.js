@@ -32,7 +32,7 @@ let displayResults = (articles) => {
   const resultsContent = displayedArticlesSlice.map((article) => (
   `
     <article class="col-md-6 col-lg-4 hidden">
-      <div class="cardGame" >
+      <div class="cardGame">
         <div class="card card-front" style="width: 22rem;">
           <a href="#pagedetail/${article.id}">
             <img src="${article.background_image}" class="card-img-top" alt="${article.name}">
@@ -45,10 +45,10 @@ let displayResults = (articles) => {
           </a>
         </div>
         <div class="card back-info hidden" style="width: 22rem;">
+          <a href="#pagedetail/${article.id}">
             <div class="card-body">
               <p> released : ${article.released}</p>
-              <p> publisher : </p>
-              <p> genre :  </p>
+              <p> genre : ${article.genres.map(genre => genre.name)} </p>
               <p> rating : ${article.rating} </p>
               <p> ratings count : ${article.ratings_count} </p>
             </div>
@@ -160,7 +160,6 @@ const PageList = (argument) => {
       showMoreButton.classList.add('hidden')
     }
   };
-
 
   render();
 

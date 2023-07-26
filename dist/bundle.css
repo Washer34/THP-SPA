@@ -11888,9 +11888,20 @@ h2, .h2 {
   font-weight: bold;
 }
 
-.card-text,
+.card {
+  border: none;
+}
+
+.card:hover {
+  box-shadow: 0 0 15px rgba(210, 10, 50, 0.5);
+}
+
 .card-title {
   color: #FFFFFF;
+}
+
+.card-front * {
+  text-decoration: none;
 }
 
 .card-front {
@@ -11921,6 +11932,16 @@ h2, .h2 {
   border-style: none;
   border-radius: 0%;
   font-weight: bold;
+  --bs-btn-active-bg: #690909a5;
+}
+
+.btn:hover {
+  background-color: rgba(105, 9, 9, 0.6470588235);
+  text-decoration: none;
+}
+
+.btn:focus {
+  background-color: #D20A32;
 }
 
 .logo-search {
@@ -12021,4 +12042,60 @@ select {
   background-color: #191919;
   color: #FFFFFF;
   font-weight: bold;
+}
+
+.back-info * {
+  text-decoration: none;
+}
+
+main {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  main {
+    max-width: 100%;
+    padding: 10px;
+  }
+}
+.buy {
+  width: 15%;
+}
+
+.buy a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.buy p {
+  margin-bottom: 1em;
+}
+
+.screenshots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.screenshots .col-6 {
+  flex-basis: calc(50% - 10px);
+  max-width: calc(50% - 10px);
+  margin-bottom: 20px;
+}
+.screenshots .col-6 img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.redbar mark, .redbar .mark {
+  color: #D20A32;
+  background-color: #D20A32;
+  font-size: 12px;
+}
+
+.titletop a {
+  text-decoration: none;
 }

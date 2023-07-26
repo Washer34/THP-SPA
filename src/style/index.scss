@@ -2,6 +2,7 @@
 
 $couleur-body: #191919;
 $couleur-h1: #D20A32;
+$couleur-h1-hover: #690909a5;
 $couleur-h2-texte: #FFFFFF;
 
 body {
@@ -29,9 +30,20 @@ h2 {
   font-weight: bold;
 }
 
-.card-text,
+.card {
+  border: none;
+}
+
+.card:hover {
+  box-shadow: 0 0 15px rgba(210, 10, 50, 0.5);
+}
+
 .card-title {
   color: $couleur-h2-texte
+}
+
+.card-front * {
+  text-decoration: none;
 }
 
 .card-front {
@@ -67,7 +79,18 @@ h2 {
   border-style: none;
   border-radius: 0%;
   font-weight: bold;
+  --bs-btn-active-bg: #690909a5;
 }
+
+.btn:hover {
+  background-color: $couleur-h1-hover;
+  text-decoration: none;
+}
+
+.btn:focus {
+  background-color: #D20A32;
+}
+
 
 .logo-search {
   position: relative;
@@ -157,7 +180,7 @@ button span {
   box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
 }
 
-select{
+select {
   background-color: $couleur-h1;
   color: $couleur-h2-texte;
   border-style: none;
@@ -166,8 +189,68 @@ select{
   margin-bottom: 1em;
 }
 
-.back-info{
+.back-info {
   background-color: $couleur-body;
   color: $couleur-h2-texte;
   font-weight: bold;
+}
+
+.back-info * {
+  text-decoration: none;
+}
+
+main {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  main {
+    max-width: 100%;
+    padding: 10px;
+  }
+}
+
+.buy {
+  width: 15%;
+}
+
+.buy a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.buy p {
+  margin-bottom: 1em;
+}
+
+.screenshots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.screenshots .col-6 {
+  flex-basis: calc(50% - 10px);
+  max-width: calc(50% - 10px);
+  margin-bottom: 20px;
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+.redbar {
+  mark {
+    color: #D20A32;
+    background-color: #D20A32;
+    font-size: 12px;
+  }
+}
+
+.titletop a {
+  text-decoration: none;
 }

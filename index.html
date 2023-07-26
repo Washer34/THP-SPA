@@ -5,32 +5,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./dist/bundle.css" />
-  <title>JV</title>
+  <title>Hyper Progame</title>
 </head>
 
 <body>
-  <a href="#">PageList</a>
-  <a href="#pagedetail/borderlands">PageDetail borderlands</a>
+  <main>
 
-  <div class="row">
-    <div class="col-lg-8">
-      <h1> The Hyper Progame <h1>
+    <div class="row">
+      <div class="col-lg-8 titletop">
+        <a href="#">
+          <h1> The Hyper Progame </h1>
+        </a>
+      </div>
+      <div class="col-lg-4">
+        <form>
+          <div class="search-bar">
+            <input id="inputText" type="text" placeholder="Find a game...">
+            <button id="searchButton" type="submit" class="logo-search"><span><img src="src/assets/images/search.svg"
+                  alt="Loupe"></span></button>
+          </div>
+        </form>
+      </div>
     </div>
-    <div class="col-lg-4">
-      <form>
-        <div class="search-bar">
-          <input id="inputText" type="text" placeholder="Find a game...">
-          <button id="searchButton" type="submit" class="logo-search"><span><img src="src/assets/images/search.svg"
-                alt="Loupe"></span></button>
-        </div>
-      </form>
-    </div>
-  </div>
 
-
-
-  <section id="pageContent">Choisissez un lien</section>
-
+    <section id="pageContent"></section>
+    <section id="footer">
+      <p class="redbar"><mark>PAturel le goï lalalalalalalallalalaalaa</mark></p>
+      <p>Merci Solène pour le footer @ 2023 - Fictionnal website for exercice</p>
+    </section>
+  </main>
   <script type="module" src="./dist/bundle.js"></script>
 </body>
 
