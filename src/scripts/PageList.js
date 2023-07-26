@@ -26,7 +26,6 @@ const getPlatformImages = (article) => {
   return Array.from(platformImagesSet).join('');
 };
 
-
 let displayResults = (articles) => {
   const maxArticles = 27;
   const displayedArticlesSlice = articles.slice(0, maxArticles);
@@ -34,7 +33,7 @@ let displayResults = (articles) => {
   `
     <article class="col-md-6 col-lg-4 hidden">
       <div class="cardGame" >
-        <div class="card" style="width: 22rem;">
+        <div class="card card-front" style="width: 22rem;">
           <a href="#pagedetail/${article.id}">
             <img src="${article.background_image}" class="card-img-top" alt="${article.name}">
             <div class="card-body">
@@ -45,9 +44,20 @@ let displayResults = (articles) => {
             </div>
           </a>
         </div>
+        <div class="card back-info hidden" style="width: 22rem;">
+            <div class="card-body">
+              <p> released : ${article.released}</p>
+              <p> publisher : </p>
+              <p> genre :  </p>
+              <p> rating : ${article.rating} </p>
+              <p> ratings count : ${article.ratings_count} </p>
+            </div>
+          </a>
+        </div>
       </div>
     </article>
   `
+
   ));
 
   const resultsContainer = document.querySelector('.page-list .articles');
@@ -58,7 +68,27 @@ let displayResults = (articles) => {
   display1.forEach((element) => {
     element.classList.remove('hidden')
   })
+
+  const displayBack = (event) => {
+    const element = event.currentTarget;
+    element.querySelector(".card-front").classList.add("hidden");
+    element.querySelector(".back-info").classList.remove("hidden");
+  }
+
+  const removeBack = (event) => {
+    const element = event.currentTarget;
+    element.querySelector(".back-info").classList.add("hidden");
+    element.querySelector(".card-front").classList.remove("hidden");
+  }
+
+  cards.forEach((card) => {
+    card.addEventListener('mouseover', displayBack);
+    card.addEventListener('mouseout', removeBack)
+  });
+
+
 };
+
 
 const PageList = (argument) => {
 
@@ -118,7 +148,6 @@ const PageList = (argument) => {
 
     preparePage();
   };
-
 
   const showMoreArticles = () => {
     const cards = document.querySelectorAll('article.hidden');

@@ -61,17 +61,17 @@ const PageDetail = (argument) => {
               <div class="info-title">Release date</div>
               <div class="info-content release-date"></div>
             </div>
-            
+
             <div class="info col-3">
               <div class="info-title">Developer</div>
               <div class="info-content developer"></div>
             </div>
-            
+
             <div class="info col-3">
               <div class="info-title">Platforms</div>
               <div class="info-content platforms"></div>
             </div>
-            
+
             <div class="info col-3">
               <div class="info-title">Publisher</div>
               <div class="info-content publisher"></div>

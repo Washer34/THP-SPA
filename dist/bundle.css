@@ -11893,10 +11893,10 @@ h2, .h2 {
   color: #FFFFFF;
 }
 
-.card {
+.card-front {
   background-color: #191919;
 }
-.card img {
+.card-front img {
   border-radius: 0;
   height: 20vh;
   object-fit: cover;
@@ -12015,4 +12015,10 @@ select {
   border-radius: 0%;
   padding: 0.5em;
   margin-bottom: 1em;
+}
+
+.back-info {
+  background-color: #191919;
+  color: #FFFFFF;
+  font-weight: bold;
 }

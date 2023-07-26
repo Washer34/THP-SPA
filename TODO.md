@@ -5,7 +5,7 @@
 [x]pagedetail A PEU PRES
 - afficher un store cliquable (BUY)
 - genre / tag / plateforme cliquables et lancent un nouveau fetch avec request adaptée (genre/tag/plateforme)
-[ ]menu déroulant pour sélection de plateformes
+[x]menu déroulant pour sélection de plateformes
 [ ]hover de la card déclenche flip avec infos :
 - date de sortie
 - éditeur

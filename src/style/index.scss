@@ -34,7 +34,7 @@ h2 {
   color: $couleur-h2-texte
 }
 
-.card {
+.card-front {
   background-color: $couleur-body;
 
   img {
@@ -164,4 +164,10 @@ select{
   border-radius: 0%;
   padding: 0.5em;
   margin-bottom: 1em;
+}
+
+.back-info{
+  background-color: $couleur-body;
+  color: $couleur-h2-texte;
+  font-weight: bold;
 }
