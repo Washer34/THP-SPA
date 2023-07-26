@@ -12007,3 +12007,12 @@ button span {
 .hoverable:hover {
   box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
 }
+
+select {
+  background-color: #D20A32;
+  color: #FFFFFF;
+  border-style: none;
+  border-radius: 0%;
+  padding: 0.5em;
+  margin-bottom: 1em;
+}

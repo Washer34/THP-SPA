@@ -3,11 +3,15 @@ let responseData;
 
 // fonction filter pour trouver les jeux qui sont sur une platforme donnée
 const findByPlatform = (articles, selectedPlatform) => {
-    const sortedArticles = articles.filter(article => {
-      const platforms = article.platforms.map(platform => platform.platform.slug);
-      return platforms.includes(selectedPlatform);
-    });
+    if (selectedPlatform === "any"){
+      displayResults(articles)
+    } else {
+      const sortedArticles = articles.filter(article => {
+        const platforms = article.platforms.map(platform => platform.platform.slug);
+        return platforms.includes(selectedPlatform);
+      });
   displayResults(sortedArticles);
+    }
 }
 
 const getPlatformImages = (article) => {
@@ -132,6 +136,5 @@ const PageList = (argument) => {
   render();
 
 };
-
 
 export default PageList;
